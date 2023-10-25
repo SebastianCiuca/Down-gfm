@@ -410,7 +410,7 @@
 			children = (
 				D4CF88961CFF94B300F07FD1 /* Down.h */,
 				D4201EF01CFA59F2008EEC6E /* Down.swift */,
-				D44875E71CFA6CF30037A624 /* Enums&Options */,
+				D44875E71CFA6CF30037A624 /* EnumsOptions */,
 				D43AE5C81CFFAE39006E1522 /* Extensions */,
 				D44875E21CFA6B120037A624 /* Renderers */,
 				D43AE5CB1CFFD068006E1522 /* Views */,
@@ -474,13 +474,13 @@
 			path = Renderers;
 			sourceTree = "<group>";
 		};
-		D44875E71CFA6CF30037A624 /* Enums&Options */ = {
+		D44875E71CFA6CF30037A624 /* EnumsOptions */ = {
 			isa = PBXGroup;
 			children = (
 				D44875E81CFA6CF30037A624 /* DownErrors.swift */,
 				D44875E91CFA6CF30037A624 /* DownOptions.swift */,
 			);
-			path = "Enums&Options";
+			path = EnumsOptions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
