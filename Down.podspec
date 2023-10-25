@@ -6,7 +6,7 @@ Pod::Spec.new do |spec|
   spec.license      = { :type => "MIT", :file => "LICENSE" }
   spec.authors      = { "Rob Phillips" => "rob@robphillips.me" }
   spec.source       = { :git => "https://github.com/SebastianCiuca/Down-gfm.git", :tag => "v" + spec.version.to_s }
-  spec.source_files = "Source/{cmark,Enums & Options,Extensions,Renderers}/**/*.{h,c,swift,inc,cpp}", "Source/*"
+  spec.source_files = "Source/{cmark,EnumsOptions,Extensions,Renderers}/**/*.{h,c,swift,inc,cpp}", "Source/*"
   spec.ios.source_files = "Source/Views/**"
   spec.osx.source_files = "Source/Views/**"
   spec.public_header_files = "Source/*.h"
