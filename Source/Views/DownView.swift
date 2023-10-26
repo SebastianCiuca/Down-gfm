@@ -16,6 +16,8 @@ import WebKit
 public typealias DownViewClosure = () -> ()
 
 open class DownView: WKWebView {
+    
+    private let heightScale: CGFloat
 
     /**
      Initializes a web view with the results of rendering a CommonMark Markdown string
@@ -29,8 +31,11 @@ open class DownView: WKWebView {
 
      - returns: An instance of Self
      */
-    public init(frame: CGRect, markdownString: String, openLinksInBrowser: Bool = true, templateBundle: Bundle? = nil, configuration: WKWebViewConfiguration? = nil, didLoadSuccessfully: DownViewClosure? = nil) throws {
+    public init(frame: CGRect, markdownString: String, openLinksInBrowser: Bool = true, templateBundle: Bundle? = nil,
+                heightScale: CGFloat = 1,
+                configuration: WKWebViewConfiguration? = nil, didLoadSuccessfully: DownViewClosure? = nil) throws {
         self.didLoadSuccessfully = didLoadSuccessfully
+        self.heightScale = heightScale
 
         if let templateBundle = templateBundle {
             self.bundle = templateBundle
@@ -100,6 +105,23 @@ open class DownView: WKWebView {
     fileprivate var didLoadSuccessfully: DownViewClosure?
 }
 
+// MARK: - Customization
+ extension DownView {
+
+     // Adapts the `viewport` tag to render the content in a mobile-friendly way
+     func pageHTMLByUpdatingMetaTag(from htmlString: String) -> String? {
+         let range = NSRange(location: 0, length: htmlString.utf16.count)
+         let metaViewportTagRegexString = "<meta name=\"viewport\".*>"
+         let updatedMetaTag = "<meta name=\"viewport\" content=\"width=device-width, initial-scale=\(heightScale)\">"
+
+         guard let regex = try? NSRegularExpression(pattern: metaViewportTagRegexString) else {
+             return nil
+         }
+
+         return regex.stringByReplacingMatches(in: htmlString, range: range, withTemplate: updatedMetaTag)
+     }
+ }
+
 // MARK: - Private API
 
 private extension DownView {
@@ -107,9 +129,10 @@ private extension DownView {
     func loadHTMLView(_ markdownString: String) throws {
         let htmlString = try markdownString.toHTML()
         let pageHTMLString = try htmlFromTemplate(htmlString)
+        let pageHTMLStringWithUpdatedMetaTag = pageHTMLByUpdatingMetaTag(from: pageHTMLString) ?? pageHTMLString
 
         #if os(iOS)
-            loadHTMLString(pageHTMLString, baseURL: baseURL)
+            loadHTMLString(pageHTMLStringWithUpdatedMetaTag, baseURL: baseURL)
         #elseif os(macOS)
             let indexURL = try createTemporaryBundle(pageHTMLString: pageHTMLString)
             loadFileURL(indexURL, allowingReadAccessTo: indexURL.deletingLastPathComponent())
@@ -184,7 +207,7 @@ extension DownView: WKNavigationDelegate {
         }
     }
     
-    public func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+    open func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         didLoadSuccessfully?()
     }
     
