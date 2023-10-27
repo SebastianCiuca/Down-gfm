@@ -13,3 +13,9 @@ FOUNDATION_EXPORT double DownVersionNumber;
 
 //! Project version string for Down.
 FOUNDATION_EXPORT const unsigned char DownVersionString[];
+
+#include "src/node.h"
+#include "src/parser.h"
+#include "src/syntax_extension.h"
+#include "src/cmark-gfm.h"
+#include "extensions/cmark-gfm-core-extensions.h"

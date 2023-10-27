@@ -178,6 +178,7 @@ private extension DownView {
 
 // MARK: - WKNavigationDelegate
 
+@available(iOSApplicationExtension, unavailable)
 extension DownView: WKNavigationDelegate {
     public func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
         decisionHandler(.allow)
@@ -196,6 +197,7 @@ extension DownView: WKNavigationDelegate {
             }
 
             decisionHandler(.cancel)
+            
             #if os(iOS)
                 UIApplication.shared.openURL(url)
             #elseif os(macOS)
