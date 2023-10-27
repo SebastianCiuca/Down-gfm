@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8A569F3F1E6B3E50008BE2AC"
-               BuildableName = "Down.framework"
+               BuildableName = "DownLib.framework"
                BlueprintName = "Down"
                ReferencedContainer = "container:Down.xcodeproj">
             </BuildableReference>
@@ -26,31 +26,29 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      codeCoverageEnabled = "YES"
-      shouldUseLaunchSchemeArgsEnv = "YES">
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      codeCoverageEnabled = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "8A569F3F1E6B3E50008BE2AC"
+            BuildableName = "DownLib.framework"
+            BlueprintName = "Down"
+            ReferencedContainer = "container:Down.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <Testables>
          <TestableReference
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8AFAEAFA1E6E32E900E09B68"
-               BuildableName = "DownTests.xctest"
+               BuildableName = "DownLib.xctest"
                BlueprintName = "DownTests"
                ReferencedContainer = "container:Down.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "8A569F3F1E6B3E50008BE2AC"
-            BuildableName = "Down.framework"
-            BlueprintName = "Down"
-            ReferencedContainer = "container:Down.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
-      <AdditionalOptions>
-      </AdditionalOptions>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -66,13 +64,11 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8A569F3F1E6B3E50008BE2AC"
-            BuildableName = "Down.framework"
+            BuildableName = "DownLib.framework"
             BlueprintName = "Down"
             ReferencedContainer = "container:Down.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
-      <AdditionalOptions>
-      </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -84,7 +80,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8A569F3F1E6B3E50008BE2AC"
-            BuildableName = "Down.framework"
+            BuildableName = "DownLib.framework"
             BlueprintName = "Down"
             ReferencedContainer = "container:Down.xcodeproj">
          </BuildableReference>
